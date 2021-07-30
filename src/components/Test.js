@@ -5,16 +5,19 @@ function Test() {
 
     const [food , setFood ] = useState({id: 0 , name: '', description: '' , img: ''});
 
-    useEffect(async ()=> {
-        const resp = await axios.get('https://www.themealdb.com/api/json/v1/1/categories.php');
-        const data = await resp.data.categories[0]
-        setFood((pre)=> ({
-            ...pre,
-            id: data.idCategory,
-            name: data.strCategory, 
-            description: data.strCategoryDescription,
-            img: data.strCategoryThumb
-        }))
+    useEffect(()=> {
+        async function fetchData(){
+            const resp = await axios.get('https://www.themealdb.com/api/json/v1/1/categories.php');
+            const data = await resp.data.categories[0];
+            setFood((pre)=> ({
+                ...pre,
+                id: data.idCategory,
+                name: data.strCategory, 
+                description: data.strCategoryDescription,
+                img: data.strCategoryThumb
+            }))
+        }
+        fetchData();
     })
 
     return (
