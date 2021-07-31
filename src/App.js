@@ -1,6 +1,6 @@
 import './App.css';
 import Test from './components/Test';
-import FoodCard from './containers/FoodCard';
+import Layout from './containers/Layout';
 
 function App() {
  
@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <h1>Initiate the project</h1>
       <Test />
-      <FoodCard />
+      <Layout />
     </div>
   );
 }

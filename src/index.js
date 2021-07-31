@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { createStore } from 'redux';
 import {Provider} from 'react-redux';
 import allReducers from '../src/reducers/index';
-import { SHOW_FOOD } from '../src/actions/index';
+import * as actions from '../src/actions/index';
 import axios from 'axios';
 
 
@@ -26,6 +26,8 @@ async function fetchData(){
   for (let cat of data) {
     allCategories.push(cat.strCategory)
   }
+  console.log(allCategories)
+  allCategories.map(cat=> store.dispatch(actions.SHOW_CAT(cat)))
 
   for (let category of allCategories) {
     const res = await axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`);
@@ -33,13 +35,17 @@ async function fetchData(){
     allFoodObj[category] = meals
   }
 
+  for (let foodCat in allFoodObj){
+    store.dispatch(actions.SELECT_CAT(foodCat , allFoodObj[foodCat]))
+  }
+  
   for (let food in allFoodObj) {
     for (let recipe of allFoodObj[food]) {
         allFoods.push(recipe)
       }
   } 
 
-  allFoods.map(oneRecipe=> store.dispatch(SHOW_FOOD(oneRecipe)))
+  allFoods.map(oneRecipe=> store.dispatch(actions.SHOW_FOOD(oneRecipe)))
 
 }
 
