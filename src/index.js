@@ -7,12 +7,45 @@ import { BrowserRouter } from 'react-router-dom';
 import { createStore } from 'redux';
 import {Provider} from 'react-redux';
 import allReducers from '../src/reducers/index';
+import { SHOW_FOOD } from '../src/actions/index';
+import axios from 'axios';
+
+
+let allCategories = [];
+let allFoodObj = {};
+let allFoods = [];
+
 
 
 const store = createStore(allReducers,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
-  
+async function fetchData(){
+  const resp = await axios.get('https://www.themealdb.com/api/json/v1/1/categories.php');
+  const data = await resp.data.categories;
+  for (let cat of data) {
+    allCategories.push(cat.strCategory)
+  }
+
+  for (let category of allCategories) {
+    const res = await axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`);
+    const meals = res.data.meals
+    allFoodObj[category] = meals
+  }
+
+  for (let food in allFoodObj) {
+    for (let recipe of allFoodObj[food]) {
+        allFoods.push(recipe)
+      }
+  } 
+
+  allFoods.map(oneRecipe=> store.dispatch(SHOW_FOOD(oneRecipe)))
+
+}
+
+fetchData()
+
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
