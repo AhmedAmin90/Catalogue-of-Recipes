@@ -39,10 +39,15 @@ function Layout() {
     
     }
 
+    const handleAllCategroy = ()=>{
+        handleFilterChange('All');
+    }
+
     return (
         <div>
             <nav>
                 <CategoryFilter handleFilter={handleFilterChange}/>
+                <button className="Layout-all-categories" onClick={handleAllCategroy}>All categories</button>
             </nav>
             <div className="Layout">
                 {selectedFoods(filteredFood)}

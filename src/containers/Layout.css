@@ -15,3 +15,15 @@ nav {
     margin-bottom: 10px;
 }
 
+.Layout-all-categories {
+    background-color: #215330;
+    border: none;
+    width: 150px;
+    height: 40px;
+    margin: 0 10px;
+    border-radius: 2px;
+    cursor: pointer;
+    color: #FCC93C ;
+    font-size: 15px;
+    letter-spacing: 2px;
+}
