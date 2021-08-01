@@ -1,15 +1,14 @@
 import React , {useState,useEffect}from 'react'
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
-import './Single.css'
+import './Single.css';
+
 function Single({foodData}) {
     const [meal , setMeal] = useState({
         id: foodData.match.params.id,
         name: '',
         ingredients: [],
-        instructions: '',
         image: '',
-        video: ''
 
     })
 
@@ -27,29 +26,31 @@ function Single({foodData}) {
                 ...pre,
                 name: data.strMeal,
                 ingredients : ingredientsArr,
-                instructions: data.strInstructions,
                 image: data.strMealThumb,
-                video: data.strYoutube,
-
             }))
-
         }
 
         getDetails();
     })
+
+    const ingredientList = meal.ingredients.map(ing=> {
+        if (ing !== '' && ing !== null) {
+            return   <li key={`${ing}${Math.random()*10}`}> {ing} </li> }
+        })
     return (
         <div className="Single">
-            <NavLink to="/"> Back To Home </NavLink>
-            <h1 className="Single-title">{meal.name}</h1>
-            <img className="Single-img" src={meal.image} alt={meal.name} />
-            <h1 className="Single-title">List of Ingredients: </h1>
-            <ul className="Single-ingredient">
-                {meal.ingredients.map(ing=> {
-                    if (ing !== '' && ing !== null) {
-                        return   <li key={`${ing}${Math.random()*10}`}> {ing} </li>
-                    }
-                    })}
-            </ul>
+            <nav>
+                <NavLink to="/"> Back To Home </NavLink>
+            </nav>
+      
+            <div className="Single-container">
+                <h1 className="Single-title">{meal.name}</h1>
+                <img className="Single-img" src={meal.image} alt={meal.name} />
+                <h1 className="Single-title">List of Ingredients: </h1>
+                <ul className="Single-ingredient">
+                {ingredientList}
+                </ul>
+            </div>
         </div>
     )
 }
