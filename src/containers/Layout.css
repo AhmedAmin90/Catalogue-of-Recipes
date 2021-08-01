@@ -5,3 +5,13 @@
     flex-wrap: wrap;
     margin: 0 auto;
 }
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FCC93C;
+    height: 50px;
+    margin-bottom: 10px;
+}
+

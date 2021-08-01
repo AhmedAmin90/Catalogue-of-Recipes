@@ -1,5 +1,6 @@
 import React , {useState,useEffect}from 'react'
 import axios from 'axios';
+import { NavLink } from 'react-router-dom';
 import './Single.css'
 function Single({foodData}) {
     const [meal , setMeal] = useState({
@@ -38,6 +39,7 @@ function Single({foodData}) {
     })
     return (
         <div className="Single">
+            <NavLink to="/"> Back To Home </NavLink>
             <h1 className="Single-title">{meal.name}</h1>
             <img className="Single-img" src={meal.image} alt={meal.name} />
             <h1 className="Single-title">List of Ingredients: </h1>

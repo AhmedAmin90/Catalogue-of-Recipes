@@ -17,15 +17,11 @@ function Layout() {
         dispatch(actions.CHANGE_FILTER(category));
       };
 
-    const handleCardClick = (id)=> {
-        
-    }
-
     const selectedFoods =  (category) => {
         if (category === 'All') {
             return foods.map(oneRecipe=> (
                 <Link key={oneRecipe.id} to={`/recipes/${oneRecipe.id}`}>
-                     <Card key={oneRecipe.id} id={oneRecipe.id} handleClick={handleCardClick} name={oneRecipe.name} img={oneRecipe.image} />
+                     <Card key={oneRecipe.id} id={oneRecipe.id} name={oneRecipe.name} img={oneRecipe.image} />
                 </Link>
             ))
         }
@@ -34,7 +30,7 @@ function Layout() {
                 if (cat[category]) {
                     return cat[category].map(food=> (
                     <Link key={food.idMeal} to={`/recipes/${food.idMeal}`}>
-                        <Card key={food.idMeal} id={food.idMeal} handleClick={handleCardClick} name={food.strMeal} img={food.strMealThumb} />
+                        <Card key={food.idMeal} id={food.idMeal} name={food.strMeal} img={food.strMealThumb} />
                     </Link>
                     ))
                 }
@@ -45,7 +41,9 @@ function Layout() {
 
     return (
         <div>
-           <CategoryFilter handleFilter={handleFilterChange}/>
+            <nav>
+                <CategoryFilter handleFilter={handleFilterChange}/>
+            </nav>
             <div className="Layout">
                 {selectedFoods(filteredFood)}
             </div>
