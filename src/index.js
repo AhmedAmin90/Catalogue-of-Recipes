@@ -2,8 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import Single from './components/Single';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter,  Switch, Route } from 'react-router-dom';
 import { createStore } from 'redux';
 import {Provider} from 'react-redux';
 import allReducers from '../src/reducers/index';
@@ -26,7 +27,7 @@ async function fetchData(){
   for (let cat of data) {
     allCategories.push(cat.strCategory)
   }
-  console.log(allCategories)
+
   allCategories.map(cat=> store.dispatch(actions.SHOW_CAT(cat)))
 
   for (let category of allCategories) {
@@ -54,11 +55,16 @@ fetchData()
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
     <Provider store={store}>
-    <App />
-    </Provider>
+
+    <BrowserRouter>
+    <Switch>
+        <Route exact path="/" render={() => <App />} />
+        <Route exact path="/recipes/:id" render={(routeProps) => <Single foodData={routeProps}/>} />
+    </Switch>
     </BrowserRouter>
+    </Provider>
+
   </React.StrictMode>,
   document.getElementById('root')
 );

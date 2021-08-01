@@ -1,5 +1,6 @@
 import React , {useState , useEffect} from 'react';
 import { useSelector , useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Card from './Card';
 import CategoryFilter from '../components/CategoryFilter';
@@ -16,19 +17,25 @@ function Layout() {
         dispatch(actions.CHANGE_FILTER(category));
       };
 
-
+    const handleCardClick = (id)=> {
+        
+    }
 
     const selectedFoods =  (category) => {
         if (category === 'All') {
             return foods.map(oneRecipe=> (
-                <Card key={oneRecipe.id} name={oneRecipe.name} img={oneRecipe.image} />
+                <Link key={oneRecipe.id} to={`/recipes/${oneRecipe.id}`}>
+                     <Card key={oneRecipe.id} id={oneRecipe.id} handleClick={handleCardClick} name={oneRecipe.name} img={oneRecipe.image} />
+                </Link>
             ))
         }
         else {
             for (let cat of selectedCategory ) {
                 if (cat[category]) {
                     return cat[category].map(food=> (
-                    <Card key={food.idMeal} name={food.strMeal} img={food.strMealThumb} />
+                    <Link key={food.idMeal} to={`/recipes/${food.idMeal}`}>
+                        <Card key={food.idMeal} id={food.idMeal} handleClick={handleCardClick} name={food.strMeal} img={food.strMealThumb} />
+                    </Link>
                     ))
                 }
               }
@@ -36,14 +43,12 @@ function Layout() {
     
     }
 
-   
-
     return (
-        <div className="Layout">
-            <CategoryFilter handleFilter={handleFilterChange}/>
-            {/* {renderFood} */}
-            {selectedFoods(filteredFood)}
-            
+        <div>
+           <CategoryFilter handleFilter={handleFilterChange}/>
+            <div className="Layout">
+                {selectedFoods(filteredFood)}
+            </div>
         </div>
     )
 }

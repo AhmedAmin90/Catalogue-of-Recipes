@@ -1,0 +1,29 @@
+.Single {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.Single-title {
+    color: #f52;
+    font-size: 20px;
+    text-transform: capitalize;
+    font-style: italic;
+}
+
+.Single-img {
+   border-radius: 10px;
+}
+
+.Single-ingredient{
+    list-style:inside;
+    padding: 10px;
+    background-color: #215330;
+    opacity: 0.8;
+}
+
+.Single-ingredient > li {
+    font-size: 15px;
+    color: #FCC93C;
+}
