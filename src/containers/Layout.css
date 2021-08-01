@@ -27,3 +27,29 @@ nav {
     font-size: 15px;
     letter-spacing: 2px;
 }
+
+.Loading {
+    height: 100vh;
+    color: #FCC93C;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.fa-heart {
+    color: #D93A3B;
+}
+
+.social-icons {
+    display: flex;
+    list-style: none;
+}
+
+.social-icons  > li {
+    margin: 5px;
+}
+
+.fab {
+    color: #24292E;
+} 

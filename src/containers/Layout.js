@@ -42,17 +42,37 @@ function Layout() {
     const handleAllCategroy = ()=>{
         handleFilterChange('All');
     }
-
+         const test =()=>{
+            while (selectedCategory.length === 0) {
+                return (
+                    <div className="Loading">
+                    <h1>Please Wait; Our delicious foods are Loading ... </h1>
+                    <p>This built with <i class="fas fa-heart"></i> by Ahmed Amin </p>
+                    <ul class="social-icons">
+                        <li> <a href="https://twitter.com/AhmedAmin12383" target="_blank"><i class="fab fa-twitter"></i></a> </li>
+                        <li> <a href="https://www.linkedin.com/in/web-developer/" target="_blank"> <i class="fab fa-linkedin-in"></i> </a> </li>
+                        <li> <a href="https://github.com/AhmedAmin90" target="_blank"> <i class="fab fa-github"></i> </a></li>
+                        <li> <a href="https://angel.co/u/ahmed-amin-22" target="_blank"> <i class="fab fa-angellist"></i> </a></li>
+                        <li> <a href="https://www.facebook.com/ahmed.amin.7564" target="_blank"> <i class="fab fa-facebook-f"></i> </a></li>
+                    </ul>
+                  </div>
+                )
+            }
+            
+            return (<div>
+                <nav>
+                    <CategoryFilter handleFilter={handleFilterChange}/>
+                    <button className="Layout-all-categories" onClick={handleAllCategroy}>All categories</button>
+                </nav>
+                <div className="Layout">
+                    {selectedFoods(filteredFood)}
+                </div>
+            </div> )
+            
+         } 
     return (
-        <div>
-            <nav>
-                <CategoryFilter handleFilter={handleFilterChange}/>
-                <button className="Layout-all-categories" onClick={handleAllCategroy}>All categories</button>
-            </nav>
-            <div className="Layout">
-                {selectedFoods(filteredFood)}
-            </div>
-        </div>
+        <div>{test()}</div>
+ 
     )
 }
 
