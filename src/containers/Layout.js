@@ -47,13 +47,13 @@ function Layout() {
                 return (
                     <div className="Loading">
                     <h1>Please Wait; Our delicious foods are Loading ... </h1>
-                    <p>This built with <i class="fas fa-heart"></i> by Ahmed Amin </p>
-                    <ul class="social-icons">
-                        <li> <a href="https://twitter.com/AhmedAmin12383" target="_blank"><i class="fab fa-twitter"></i></a> </li>
-                        <li> <a href="https://www.linkedin.com/in/web-developer/" target="_blank"> <i class="fab fa-linkedin-in"></i> </a> </li>
-                        <li> <a href="https://github.com/AhmedAmin90" target="_blank"> <i class="fab fa-github"></i> </a></li>
-                        <li> <a href="https://angel.co/u/ahmed-amin-22" target="_blank"> <i class="fab fa-angellist"></i> </a></li>
-                        <li> <a href="https://www.facebook.com/ahmed.amin.7564" target="_blank"> <i class="fab fa-facebook-f"></i> </a></li>
+                    <p>This built with <i className="fas fa-heart"></i> by Ahmed Amin </p>
+                    <ul className="social-icons">
+                        <li> <a href="https://twitter.com/AhmedAmin12383" target="_blank"><i className="fab fa-twitter"></i></a> </li>
+                        <li> <a href="https://www.linkedin.com/in/web-developer/" target="_blank"> <i className="fab fa-linkedin-in"></i> </a> </li>
+                        <li> <a href="https://github.com/AhmedAmin90" target="_blank"> <i className="fab fa-github"></i> </a></li>
+                        <li> <a href="https://angel.co/u/ahmed-amin-22" target="_blank"> <i className="fab fa-angellist"></i> </a></li>
+                        <li> <a href="https://www.facebook.com/ahmed.amin.7564" target="_blank"> <i className="fab fa-facebook-f"></i> </a></li>
                     </ul>
                   </div>
                 )

@@ -18,7 +18,7 @@ let allFoods = [];
 
 
 
-const store = createStore(allReducers,
+export const store = createStore(allReducers,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 async function fetchData(){
@@ -54,8 +54,8 @@ fetchData()
 
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
+
+    (<Provider store={store}>
 
     <BrowserRouter>
     <Switch>
@@ -63,10 +63,8 @@ ReactDOM.render(
         <Route exact path="/recipes/:id" render={(routeProps) => <Single foodData={routeProps}/>} />
     </Switch>
     </BrowserRouter>
-    </Provider>
-
-  </React.StrictMode>,
-  document.getElementById('root')
+    </Provider>),
+  document.getElementById('root') || document.createElement('div') // for testing
 );
 
 // If you want to start measuring performance in your app, pass a function
