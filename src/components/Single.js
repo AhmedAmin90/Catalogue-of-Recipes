@@ -3,18 +3,20 @@ import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 import './Single.css';
 
-function Single({foodData}) {
+const Single = ({foodData}) =>{
     const [meal , setMeal] = useState({
-        id: foodData.match.params.id,
+        id: 1,
         name: '',
         ingredients: [],
         image: '',
 
     })
 
+    const selectedId = foodData.match.params.id;
+
     useEffect(()=>{
         async function getDetails(){
-            const res = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal.id}`);
+            const res = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${selectedId}`);
             const data =  await res.data.meals[0];
             let ingredientsArr = [];
             for (let item in data) {
@@ -24,6 +26,7 @@ function Single({foodData}) {
             }
             setMeal((pre)=> ({
                 ...pre,
+                id: data.idMeal,
                 name: data.strMeal,
                 ingredients : ingredientsArr,
                 image: data.strMealThumb,

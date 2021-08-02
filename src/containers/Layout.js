@@ -1,5 +1,5 @@
 import React , {useState , useEffect} from 'react';
-import { useSelector , useDispatch } from 'react-redux';
+import { useSelector , useDispatch, connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Card from './Card';
@@ -8,11 +8,16 @@ import * as actions from '../actions/index';
 import './Layout.css'
 
 
-function Layout() {
+const Layout = ({ selectedCategory , foods , filteredFood }) => {
     const dispatch = useDispatch();
-    const selectedCategory = useSelector(state => state.selectedReducer)
-    const foods = useSelector(state => state.foodReducer);
-    const filteredFood = useSelector(state => state.filterReducer);
+    // if(!test){
+        selectedCategory =  useSelector(state => state.selectedReducer);
+        foods = useSelector(state => state.foodReducer);
+        filteredFood = useSelector(state => state.filterReducer);
+    // }
+    // useEffect(() =>{
+    //     dispatch(fetcher)
+    // },[])
     const handleFilterChange = (category) => {
         dispatch(actions.CHANGE_FILTER(category));
       };
@@ -42,9 +47,9 @@ function Layout() {
     const handleAllCategroy = ()=>{
         handleFilterChange('All');
     }
-         const test =()=>{
-            while (selectedCategory.length === 0) {
-                return (
+         const loading =()=>{
+            return selectedCategory.length === 0 ?
+                (
                     <div className="Loading">
                     <h1>Please Wait; Our delicious foods are Loading ... </h1>
                     <p>This built with <i className="fas fa-heart"></i> by Ahmed Amin </p>
@@ -56,11 +61,11 @@ function Layout() {
                         <li> <a href="https://www.facebook.com/ahmed.amin.7564" target="_blank"> <i className="fab fa-facebook-f"></i> </a></li>
                     </ul>
                   </div>
-                )
-            }
+                ):
             
-            return (<div>
+            (<div>
                 <nav>
+                    {filteredFood}
                     <CategoryFilter handleFilter={handleFilterChange}/>
                     <button className="Layout-all-categories" onClick={handleAllCategroy}>All categories</button>
                 </nav>
@@ -71,9 +76,15 @@ function Layout() {
             
          } 
     return (
-        <div>{test()}</div>
+        <div>{loading()}</div>
  
     )
 }
+// const selector = (state) => ({
+//     selectedCategory: state.selectedReducer,
+//     foods: state.foodReducer,
+//     filteredFood: state.filterReducer,
+// })
+// export default connect(selector,null)(Layout)
 
 export default Layout

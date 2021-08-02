@@ -1,7 +1,7 @@
 import React from 'react';
 import './Card.css'
 
-function Card({ img , name }) {   
+const Card = ({ img , name }) => {   
     
     return (
         <div className="Card" style={{backgroundImage: `url(${img})`}}>
