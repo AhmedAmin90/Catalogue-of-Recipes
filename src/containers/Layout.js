@@ -41,7 +41,6 @@ const Layout = ({ selectedCategory, foods, filteredFood }) => {
     }
     if (!selectedCategory) {
       for (const cat of renderSelectedCategory) {
-      // for (let i = 0; i < renderSelectedCategory.length; i += 1) {
         if (cat[category]) {
           return cat[category].map((food) => (
             <Link key={food.idMeal} to={`/recipes/${food.idMeal}`}>
@@ -57,7 +56,6 @@ const Layout = ({ selectedCategory, foods, filteredFood }) => {
       }
     } else {
       for (const cat of selectedCategory) {
-      // for (let i = 0; i < selectedCategory.length; i += 1) {
         if (cat[category]) {
           return cat[category].map((food) => (
             <Link key={food.idMeal} to={`/recipes/${food.idMeal}`}>
@@ -165,12 +163,6 @@ const Layout = ({ selectedCategory, foods, filteredFood }) => {
 
   );
 };
-// const selector = (state) => ({
-//     selectedCategory: state.selectedReducer,
-//     foods: state.foodReducer,
-//     filteredFood: state.filterReducer,
-// })
-// export default connect(selector,null)(Layout)
 
 Layout.defaultProps = {
   selectedCategory: null,

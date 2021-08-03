@@ -4,9 +4,7 @@ import { useSelector } from 'react-redux';
 import './CategoryFilter.css';
 
 const CategoryFilter = ({ handleFilter, value }) => {
-  // const dispatch = useDispatch();
   const categories = useSelector((state) => state.catReducer);
-  // const selectedCat = useSelector((state) => state.filterReducer);
 
   const handleChange = ({ target }) => {
     handleFilter(target.value);
