@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import '@testing-library/jest-dom/extend-expect';
+import { create } from 'react-test-renderer';
 import { Provider } from 'react-redux';
 import {
   BrowserRouter as Router,
@@ -8,7 +9,12 @@ import {
 import store from '../index';
 import Layout from '../containers/Layout';
 
-describe('rendered Main', () => {
+test('renders correctly', () => {
+  const tree = create(<Provider store={store}><Router><Layout /></Router></Provider>).toJSON();
+  expect(tree).toMatchSnapshot();
+});
+
+describe('rendered Layout', () => {
   let renderedComponent;
   beforeEach(() => {
     const selectedCat = [{
