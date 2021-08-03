@@ -1,49 +1,48 @@
 .Single {
-    background-color: rgb(60, 131, 131);
+  background-color: rgb(60, 131, 131);
 }
 
 .Single-container {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 0 auto;
 }
 
 .Single-title {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    color: #f52;
-    font-size: 20px;
-    text-transform: capitalize;
-    font-style: italic;
-    margin: 10px 0;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  color: #f52;
+  font-size: 20px;
+  text-transform: capitalize;
+  font-style: italic;
+  margin: 10px 0;
 }
 
 .Single-img {
-   border-radius: 10px;
+  border-radius: 10px;
 }
 
-.Single-ingredient{
-    list-style:inside;
-    padding: 10px;
-    margin: 0;
-    margin-bottom: 20px;
-    background-color: #215330;
-    opacity: 0.8;
-    border-radius: 10px;
-    
+.Single-ingredient {
+  list-style: inside;
+  padding: 10px;
+  margin: 0;
+  margin-bottom: 20px;
+  background-color: #215330;
+  opacity: 0.8;
+  border-radius: 10px;
 }
 
 .Single-ingredient > li {
-    font-size: 15px;
-    color: #FCC93C;
-    margin: 10px;
+  font-size: 15px;
+  color: #fcc93c;
+  margin: 10px;
 }
 
 nav > a {
-    color: #215330;
-    font-size: 15px;
-    letter-spacing: 2px;
-    text-decoration: none;
+  color: #215330;
+  font-size: 15px;
+  letter-spacing: 2px;
+  text-decoration: none;
 }
