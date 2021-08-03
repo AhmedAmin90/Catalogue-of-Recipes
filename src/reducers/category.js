@@ -1,12 +1,9 @@
-
-
 const catReducer = (state = [], action) => {
-    if (action.type === 'SHOW_CAT' ){
-        return [...state, action.payload];
-    }
-  else {
-    return state
+  if (action.type === 'SHOW_CAT') {
+    return [...state, action.payload];
   }
-  };
-  
-  export default catReducer;
+
+  return state;
+};
+
+export default catReducer;

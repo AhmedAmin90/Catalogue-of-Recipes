@@ -5,7 +5,7 @@ exports[`renders correctly 1`] = `
   className="Card"
   style={
     Object {
-      "backgroundImage": "url(undefined)",
+      "backgroundImage": "url(test)",
     }
   }
 >
@@ -14,7 +14,9 @@ exports[`renders correctly 1`] = `
   >
     <h1
       className="Card-name"
-    />
+    >
+      test
+    </h1>
   </div>
 </div>
 `;

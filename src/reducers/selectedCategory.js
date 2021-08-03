@@ -1,11 +1,9 @@
 const selectedReducer = (state = [], action) => {
-    if (action.type === 'SELECT_CAT' ){
-        return [...state, action.payload];
-    }
-  else {
-    return state
+  if (action.type === 'SELECT_CAT') {
+    return [...state, action.payload];
   }
-  };
-  
-  export default selectedReducer;
-  
+
+  return state;
+};
+
+export default selectedReducer;
