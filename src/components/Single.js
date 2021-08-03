@@ -6,8 +6,10 @@ import { NavLink } from 'react-router-dom';
 import './Single.css';
 
 const Single = ({ foodData }) => {
+  const selectedId = foodData.match.params.id;
+
   const [meal, setMeal] = useState({
-    id: 1,
+    id: selectedId,
     name: '',
     ingredients: [],
     image: '',
@@ -15,29 +17,31 @@ const Single = ({ foodData }) => {
   });
   const [axiosRes, setAxiosRes] = useState('');
 
-  const selectedId = foodData.match.params.id;
-
   useEffect(() => {
     const cancelToken = axios.CancelToken;
     const source = cancelToken.source();
     setAxiosRes(axiosRes);
     async function getDetails() {
-      const res = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${selectedId}`, {
-        cancelToken: source.token,
-      });
-      const data = await res.data.meals[0];
-      const ingredientsArr = [];
-      for (const item in data) {
-        if (item.indexOf('Ingredient') !== -1) {
-          ingredientsArr.push(data[item]);
+      try {
+        const res = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${selectedId}`, {
+          cancelToken: source.token,
+        });
+        const data = await res.data.meals[0];
+        const ingredientsArr = [];
+        for (const item in data) {
+          if (item.indexOf('Ingredient') !== -1) {
+            ingredientsArr.push(data[item]);
+          }
         }
+        setMeal((pre) => ({
+          ...pre,
+          name: data.strMeal,
+          ingredients: ingredientsArr,
+          image: data.strMealThumb,
+        }));
+      } catch (err) {
+        return err;
       }
-      setMeal((pre) => ({
-        ...pre,
-        name: data.strMeal,
-        ingredients: ingredientsArr,
-        image: data.strMealThumb,
-      }));
     }
 
     getDetails();

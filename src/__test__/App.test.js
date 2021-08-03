@@ -36,19 +36,31 @@ describe('rendered Main', () => {
       </Provider>,
     );
   });
-  it('has a div with class loading', () => {
+  it('has a div with class Layout', () => {
     const { container } = renderedComponent;
     const appElement = container.querySelector('.Layout');
     expect(appElement).toBeInTheDocument();
   });
 
-  it('has a div with ', () => {
+  it('without a div with class loading', () => {
+    const { container } = renderedComponent;
+    const appElement = container.querySelector('.Loading');
+    expect(appElement).toBeNull();
+  });
+
+  it('has a has a name of food with : ', () => {
     const { getByText } = renderedComponent;
     const appElement = getByText('Beef and Mustard Pie');
     expect(appElement).toBeInTheDocument();
   });
 
-  it('has a div with ', () => {
+  it('has a has a name of food with : ', () => {
+    const { getByText } = renderedComponent;
+    const appElement = getByText('Beef and Mustard Pie');
+    expect(appElement).not.toBeNull();
+  });
+
+  it('has a a name of category with Beef', () => {
     const { getByText } = renderedComponent;
     const appElement = getByText('Beef');
     expect(appElement).toBeInTheDocument();
@@ -71,6 +83,12 @@ describe('rendered Main', () => {
     const { container } = renderedComponent;
     const appElement = container.querySelector('.Loading');
     expect(appElement).toBeInTheDocument();
+  });
+
+  it('without a div with class Layout', () => {
+    const { container } = renderedComponent;
+    const appElement = container.querySelector('.Layout');
+    expect(appElement).toBeNull();
   });
 
   it('has a div a waiting text ', () => {
