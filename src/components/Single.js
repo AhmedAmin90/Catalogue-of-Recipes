@@ -16,21 +16,27 @@ const Single = ({foodData}) =>{
 
     useEffect(()=>{
         async function getDetails(){
-            const res = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${selectedId}`);
-            const data =  await res.data.meals[0];
-            let ingredientsArr = [];
-            for (let item in data) {
-                if (item.indexOf('Ingredient') !== -1 ) {
-                    ingredientsArr.push(data[item])
+            try {
+                const res = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${selectedId}`);
+                const data =  await res.data.meals[0];
+                let ingredientsArr = [];
+                for (let item in data) {
+                    if (item.indexOf('Ingredient') !== -1 ) {
+                        ingredientsArr.push(data[item])
+                    }
                 }
+                setMeal((pre)=> ({
+                    ...pre,
+                    id: data.idMeal,
+                    name: data.strMeal,
+                    ingredients : ingredientsArr,
+                    image: data.strMealThumb,
+                }))
             }
-            setMeal((pre)=> ({
-                ...pre,
-                id: data.idMeal,
-                name: data.strMeal,
-                ingredients : ingredientsArr,
-                image: data.strMealThumb,
-            }))
+            catch(error) {
+                throw error
+            }
+           
         }
 
         getDetails();

@@ -9,29 +9,36 @@ import './Layout.css'
 
 
 const Layout = ({ selectedCategory , foods , filteredFood }) => {
+
     const dispatch = useDispatch();
-    // if(!test){
-        selectedCategory =  useSelector(state => state.selectedReducer);
-        foods = useSelector(state => state.foodReducer);
-        filteredFood = useSelector(state => state.filterReducer);
-    // }
-    // useEffect(() =>{
-    //     dispatch(fetcher)
-    // },[])
+
+    const renderSelectedCategory =  useSelector(state => state.selectedReducer);
+    const renderFoods = useSelector(state => state.foodReducer);
+    const renderFilteredFood = useSelector(state => state.filterReducer);
+
     const handleFilterChange = (category) => {
         dispatch(actions.CHANGE_FILTER(category));
       };
 
     const selectedFoods =  (category) => {
         if (category === 'All') {
-            return foods.map(oneRecipe=> (
+            if (!foods){
+            return renderFoods.map(oneRecipe=> (
                 <Link key={oneRecipe.id} to={`/recipes/${oneRecipe.id}`}>
                      <Card key={oneRecipe.id} id={oneRecipe.id} name={oneRecipe.name} img={oneRecipe.image} />
                 </Link>
-            ))
+            ))}
+            else {
+                return foods.map(oneRecipe=> (
+                    <Link key={oneRecipe.id} to={`/recipes/${oneRecipe.id}`}>
+                         <Card key={oneRecipe.id} id={oneRecipe.id} name={oneRecipe.name} img={oneRecipe.image} />
+                    </Link>
+                ))
+            }
         }
         else {
-            for (let cat of selectedCategory ) {
+            if (!selectedCategory){
+            for (let cat of renderSelectedCategory ) {
                 if (cat[category]) {
                     return cat[category].map(food=> (
                     <Link key={food.idMeal} to={`/recipes/${food.idMeal}`}>
@@ -39,6 +46,17 @@ const Layout = ({ selectedCategory , foods , filteredFood }) => {
                     </Link>
                     ))
                 }
+              }}
+              else {
+                for (let cat of selectedCategory ) {
+                    if (cat[category]) {
+                        return cat[category].map(food=> (
+                        <Link key={food.idMeal} to={`/recipes/${food.idMeal}`}>
+                            <Card key={food.idMeal} id={food.idMeal} name={food.strMeal} img={food.strMealThumb} />
+                        </Link>
+                        ))
+                    }
+                  }
               }
         }
     
@@ -48,8 +66,10 @@ const Layout = ({ selectedCategory , foods , filteredFood }) => {
         handleFilterChange('All');
     }
          const loading =()=>{
-            return selectedCategory.length === 0 ?
+            if (!selectedCategory  || !foods || !filteredFood) {
+                return renderSelectedCategory.length === 0 ? 
                 (
+    
                     <div className="Loading">
                     <h1>Please Wait; Our delicious foods are Loading ... </h1>
                     <p>This built with <i className="fas fa-heart"></i> by Ahmed Amin </p>
@@ -65,14 +85,26 @@ const Layout = ({ selectedCategory , foods , filteredFood }) => {
             
             (<div>
                 <nav>
-                    {filteredFood}
-                    <CategoryFilter handleFilter={handleFilterChange}/>
+                    <CategoryFilter handleFilter={handleFilterChange} value={renderFilteredFood}/>
                     <button className="Layout-all-categories" onClick={handleAllCategroy}>All categories</button>
                 </nav>
                 <div className="Layout">
-                    {selectedFoods(filteredFood)}
+                    {selectedFoods(renderFilteredFood)}
                 </div>
             </div> )
+            }
+            else {
+                return (<div>
+                    <nav>
+                        <CategoryFilter handleFilter={handleFilterChange} value={filteredFood}/>
+                        <button className="Layout-all-categories" onClick={handleAllCategroy}>All categories</button>
+                    </nav>
+                    <div className="Layout">
+                        {selectedFoods(filteredFood)}
+                    </div>
+                </div> )
+            }
+            
             
          } 
     return (

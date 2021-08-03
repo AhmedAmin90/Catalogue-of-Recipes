@@ -4,7 +4,7 @@ import { useSelector , useDispatch} from 'react-redux';
 import * as actions from '../actions/index'
 import './CategoryFilter.css'
 
-const CategoryFilter = ({ handleFilter }) => {
+const CategoryFilter = ({ handleFilter , value }) => {
   const dispatch = useDispatch();
   const categories = useSelector(state => state.catReducer);
   const selectedCat = useSelector(state=> state.filterReducer);
@@ -19,7 +19,7 @@ const CategoryFilter = ({ handleFilter }) => {
         <label htmlFor="fiter-category" className="CategoryFilter-select">
           Filter By Category
           <select onChange={handleChange} name="category" id="fiter-category">
-            <option>{selectedCat}</option>
+            <option>{value}</option>
             {categories.map((cat) => <option  key={cat} value={cat}>{cat}</option>)}
           </select>
         </label>

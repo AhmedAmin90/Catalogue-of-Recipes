@@ -15,7 +15,7 @@ test('renders correctly', () => {
   const tree = create(
     <Provider store={store}>
     <Router>
-       <CategoryFilter handleFilter={() => {}} />
+       <CategoryFilter handleFilter={() => {}} value="All"/>
     </Router>
   </Provider>
   ).toJSON();
@@ -28,7 +28,7 @@ describe('rendered Main', () => {
       renderedComponent = render(
         <Provider store={store}>
           <Router>
-             <CategoryFilter handleFilter={() => {}} />
+             <CategoryFilter handleFilter={() => {}} value="All" />
           </Router>
         </Provider>,
       );

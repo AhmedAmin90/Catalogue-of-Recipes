@@ -1,4 +1,4 @@
-import { render, screen , fireEvent , cleanup} from '@testing-library/react';
+import { render} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import '@testing-library/jest-dom/extend-expect';
 import { Provider } from 'react-redux';
@@ -33,26 +33,57 @@ describe('rendered Main', () => {
     renderedComponent = render(
       <Provider store={store}>
         <Router>
-           <Layout selectedCategory={selectedCat} foods={foods} test={true} filteredFood={filteredFood} />
+           <Layout foods={foods} selectedCategory={selectedCat} filteredFood={filteredFood}/>
         </Router>
       </Provider>,
     );
   });
   it('has a div with class loading', () => {
     const { container } = renderedComponent;
+    const appElement = container.querySelector('.Layout');
+    expect(appElement).toBeInTheDocument();
+  });
+
+  it('has a div with ', () => {
+      const { getByText } = renderedComponent;
+      const appElement = getByText('Beef and Mustard Pie');
+      expect(appElement).toBeInTheDocument();
+  
+  });
+
+  it('has a div with ', () => {
+    const { getByText } = renderedComponent;
+    const appElement = getByText('Beef');
+    expect(appElement).toBeInTheDocument();
+});
+
+});
+
+
+describe('rendered Main', () => {
+  let renderedComponent;
+  beforeEach(() => {
+    renderedComponent = render(
+      <Provider store={store}>
+        <Router>
+           <Layout />
+        </Router>
+      </Provider>,
+    );
+  });
+  
+  it('has a div with class loading', () => {
+    const { container } = renderedComponent;
     const appElement = container.querySelector('.Loading');
     expect(appElement).toBeInTheDocument();
   });
 
-  // it('has a div with class Layout', () => {
-
-  //     // const { getByRole } = renderedComponent;
-  //     const { container } = renderedComponent;
-  //     // const appElement = getByRole('button', { name: 'All categories' });
-  //     const appElement = container.querySelector('.Layout')
-  //     expect(appElement).toBeInTheDocument();
-    
-
-  // });
+  it('has a div a waiting text ', () => {
+      const { getByText } = renderedComponent;
+      const appElement = getByText('Please Wait; Our delicious foods are Loading ...');
+      expect(appElement).toBeInTheDocument();
+  
+  });
 
 });
+
