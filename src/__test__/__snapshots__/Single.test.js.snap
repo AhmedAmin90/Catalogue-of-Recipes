@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="Single"
+>
+  <nav>
+    <a
+      aria-current="page"
+      className="active"
+      href="/"
+      onClick={[Function]}
+      style={Object {}}
+    >
+       Back To Home 
+    </a>
+  </nav>
+  <div
+    className="Single-container"
+  >
+    <h1
+      className="Single-title"
+    >
+      
+    </h1>
+    <img
+      alt=""
+      className="Single-img"
+      src=""
+    />
+    <h1
+      className="Single-title"
+    >
+      List of Ingredients: 
+    </h1>
+    <ul
+      className="Single-ingredient"
+    />
+  </div>
+</div>
+`;

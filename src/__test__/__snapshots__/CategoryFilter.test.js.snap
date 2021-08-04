@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="CategoryFilter"
+>
+  <label
+    className="CategoryFilter-select"
+    htmlFor="fiter-category"
+  >
+    Filter By Category
+    <select
+      id="fiter-category"
+      name="category"
+      onChange={[Function]}
+    >
+      <option>
+        All
+      </option>
+    </select>
+  </label>
+</div>
+`;

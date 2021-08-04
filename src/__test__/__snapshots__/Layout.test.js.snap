@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <div
+    className="Loading"
+  >
+    <h1>
+      Please Wait; Our delicious foods are Loading ... 
+    </h1>
+    <p>
+      This built with
+      <i
+        className="fas fa-heart"
+      />
+      by Ahmed Amin
+    </p>
+    <ul
+      className="social-icons"
+    >
+      <li>
+        <a
+          href="https://twitter.com/AhmedAmin12383"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <i
+            className="fab fa-twitter"
+          />
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.linkedin.com/in/web-developer/"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <i
+            className="fab fa-linkedin-in"
+          />
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://github.com/AhmedAmin90"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <i
+            className="fab fa-github"
+          />
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://angel.co/u/ahmed-amin-22"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <i
+            className="fab fa-angellist"
+          />
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.facebook.com/ahmed.amin.7564"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <i
+            className="fab fa-facebook-f"
+          />
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+`;

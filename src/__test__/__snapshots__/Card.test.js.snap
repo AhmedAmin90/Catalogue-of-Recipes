@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="Card"
+  style={
+    Object {
+      "backgroundImage": "url(test)",
+    }
+  }
+>
+  <div
+    className="Card-shadow"
+  >
+    <h1
+      className="Card-name"
+    >
+      test
+    </h1>
+  </div>
+</div>
+`;

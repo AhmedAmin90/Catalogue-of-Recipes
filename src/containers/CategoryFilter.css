@@ -1,0 +1,19 @@
+.CategoryFilter-select {
+  color: #215330;
+  letter-spacing: 2px;
+}
+
+.CategoryFilter-select > select {
+  width: 200px;
+  height: 40px;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 15px;
+  letter-spacing: 2px;
+}
+
+.CategoryFilter-select > select > option {
+  font-size: 15px;
+  color: #215330;
+  background-color: #ddd;
+}

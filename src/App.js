@@ -1,9 +1,10 @@
 import './App.css';
+import Layout from './containers/Layout';
 
 function App() {
   return (
     <div className="App">
-      <h>Initiate the project</h>
+      <Layout />
     </div>
   );
 }

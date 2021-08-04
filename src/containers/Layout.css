@@ -1,0 +1,55 @@
+.Layout {
+  width: 90%;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fcc93c;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.Layout-all-categories {
+  background-color: #215330;
+  border: none;
+  width: 150px;
+  height: 40px;
+  margin: 0 10px;
+  border-radius: 2px;
+  cursor: pointer;
+  color: #fcc93c;
+  font-size: 15px;
+  letter-spacing: 2px;
+}
+
+.Loading {
+  height: 100vh;
+  color: #fcc93c;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.fa-heart {
+  color: #d93a3b;
+}
+
+.social-icons {
+  display: flex;
+  list-style: none;
+}
+
+.social-icons > li {
+  margin: 5px;
+}
+
+.fab {
+  color: #24292e;
+}
