@@ -1,4 +1,4 @@
-/* eslint-disable consistent-return , no-restricted-syntax */
+/* eslint-disable consistent-return  */
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -40,9 +40,9 @@ const Layout = ({ selectedCategory, foods, filteredFood }) => {
       ));
     }
     if (!selectedCategory) {
-      for (const cat of renderSelectedCategory) {
-        if (cat[category]) {
-          return cat[category].map((food) => (
+      for (let i = 0; i < renderSelectedCategory.length; i += 1) {
+        if (renderSelectedCategory[i][category]) {
+          return renderSelectedCategory[i][category].map((food) => (
             <Link key={food.idMeal} to={`/recipes/${food.idMeal}`}>
               <Card
                 key={food.idMeal}
@@ -54,10 +54,24 @@ const Layout = ({ selectedCategory, foods, filteredFood }) => {
           ));
         }
       }
+      // for (const cat of renderSelectedCategory) {
+      //   if (cat[category]) {
+      //     return cat[category].map((food) => (
+      //       <Link key={food.idMeal} to={`/recipes/${food.idMeal}`}>
+      //         <Card
+      //           key={food.idMeal}
+      //           id={food.idMeal}
+      //           name={food.strMeal}
+      //           img={food.strMealThumb}
+      //         />
+      //       </Link>
+      //     ));
+      //   }
+      // }
     } else {
-      for (const cat of selectedCategory) {
-        if (cat[category]) {
-          return cat[category].map((food) => (
+      for (let i = 0; i < selectedCategory.length; i += 1) {
+        if (selectedCategory[i][category]) {
+          return selectedCategory[i][category].map((food) => (
             <Link key={food.idMeal} to={`/recipes/${food.idMeal}`}>
               <Card
                 key={food.idMeal}
@@ -69,6 +83,20 @@ const Layout = ({ selectedCategory, foods, filteredFood }) => {
           ));
         }
       }
+      // for (const cat of selectedCategory) {
+      //   if (cat[category]) {
+      //     return cat[category].map((food) => (
+      //       <Link key={food.idMeal} to={`/recipes/${food.idMeal}`}>
+      //         <Card
+      //           key={food.idMeal}
+      //           id={food.idMeal}
+      //           name={food.strMeal}
+      //           img={food.strMealThumb}
+      //         />
+      //       </Link>
+      //     ));
+      //   }
+      // }
     }
   };
 

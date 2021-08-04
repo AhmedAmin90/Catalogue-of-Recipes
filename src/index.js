@@ -1,5 +1,4 @@
-/* eslint-disable no-underscore-dangle,
-no-await-in-loop , react/jsx-closing-tag-location ,  guard-for-in , no-restricted-syntax */
+/* eslint-disable react/jsx-indent */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -14,7 +13,8 @@ import allReducers from './reducers/index';
 import * as actions from './actions/index';
 
 const store = createStore(allReducers,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+  /* eslint-disable-next-line */
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 export default store;
 
@@ -24,25 +24,30 @@ async function fetchData() {
   const allFoods = [];
   const resp = await axios.get('https://www.themealdb.com/api/json/v1/1/categories.php');
   const data = await resp.data.categories;
-  for (const cat of data) {
-    allCategories.push(cat.strCategory);
+
+  for (let i = 0; i < data.length; i += 1) {
+    allCategories.push(data[i].strCategory);
   }
 
   allCategories.map((cat) => store.dispatch(actions.SHOW_CAT(cat)));
 
-  for (const category of allCategories) {
+  for (let i = 0; i < allCategories.length; i += 1) {
+    const category = allCategories[i];
+    /* eslint-disable-next-line */
     const res = await axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`);
     const { meals } = res.data;
     allFoodObj[category] = meals;
   }
 
-  for (const foodCat in allFoodObj) {
-    store.dispatch(actions.SELECT_CAT(foodCat, allFoodObj[foodCat]));
+  const allFoodObjArr = Object.keys(allFoodObj);
+
+  for (let i = 0; i < allFoodObjArr.length; i += 1) {
+    store.dispatch(actions.SELECT_CAT(allFoodObjArr[i], allFoodObj[allFoodObjArr[i]]));
   }
 
-  for (const food in allFoodObj) {
-    for (const recipe of allFoodObj[food]) {
-      allFoods.push(recipe);
+  for (let i = 0; i < allFoodObjArr.length; i += 1) {
+    for (let x = 0; x < allFoodObj[allFoodObjArr[i]].length; x += 1) {
+      allFoods.push(allFoodObj[allFoodObjArr[i]][x]);
     }
   }
 
@@ -52,7 +57,6 @@ async function fetchData() {
 fetchData();
 
 ReactDOM.render(
-
   (<Provider store={store}>
     <BrowserRouter>
       <Switch>
@@ -60,7 +64,7 @@ ReactDOM.render(
         <Route exact path="/recipes/:id" render={(routeProps) => <Single foodData={routeProps} />} />
       </Switch>
     </BrowserRouter>
-  </Provider>),
+   </Provider>),
   document.getElementById('root') || document.createElement('div'), // for testing
 );
 

@@ -1,4 +1,4 @@
-/* eslint-disable consistent-return, array-callback-return , no-restricted-syntax */
+/* eslint-disable consistent-return, array-callback-return */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
@@ -13,7 +13,6 @@ const Single = ({ foodData }) => {
     name: '',
     ingredients: [],
     image: '',
-
   });
   const [axiosRes, setAxiosRes] = useState('');
 
@@ -28,9 +27,10 @@ const Single = ({ foodData }) => {
         });
         const data = await res.data.meals[0];
         const ingredientsArr = [];
-        for (const item in data) {
-          if (item.indexOf('Ingredient') !== -1) {
-            ingredientsArr.push(data[item]);
+        const dataArr = Object.keys(data);
+        for (let i = 0; i < dataArr.length; i += 1) {
+          if (dataArr[i].indexOf('Ingredient') !== -1) {
+            ingredientsArr.push(data[dataArr[i]]);
           }
         }
         setMeal((pre) => ({
