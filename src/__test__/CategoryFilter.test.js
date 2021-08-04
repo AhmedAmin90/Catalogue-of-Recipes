@@ -45,7 +45,6 @@ describe('rendered Main', () => {
   });
 });
 
-
 describe('rendered Main', () => {
   let renderedComponent;
   beforeEach(() => {
@@ -65,14 +64,12 @@ describe('rendered Main', () => {
   });
 
   it('has a a select with id filter-category without value', () => {
-    const {container } = renderedComponent;
-    const appElement = container.querySelector('#fiter-category')
+    const { container } = renderedComponent;
+    const appElement = container.querySelector('#fiter-category');
     expect(appElement).toBeTruthy();
-    expect(appElement.innerHTML).not.toBe('All')
+    expect(appElement.innerHTML).not.toBe('All');
   });
 });
-
-
 
 describe('Test handle Change', () => {
   const CategoryFilter = () => {

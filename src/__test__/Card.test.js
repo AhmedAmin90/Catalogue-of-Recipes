@@ -31,7 +31,7 @@ describe('rendered Main', () => {
     const appElement = container.querySelector('.Card');
     expect(appElement).toBeInTheDocument();
     expect(appElement).toHaveStyle('background-image: url(\'Test Url\')');
-    expect(appElement).not.toBeNull()
+    expect(appElement).not.toBeNull();
   });
 
   it('The div has a text with name prop', () => {

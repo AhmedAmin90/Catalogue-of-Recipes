@@ -1,4 +1,4 @@
-import { render , screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import '@testing-library/jest-dom/extend-expect';
 import { create } from 'react-test-renderer';
@@ -59,29 +59,27 @@ describe('rendered Layout', () => {
     const { container } = renderedComponent;
     const appElement = container.querySelector('.Card-name');
     expect(appElement).not.toBeFalsy();
-    expect(appElement.innerHTML).toBe('Beef and Mustard Pie')
-
+    expect(appElement.innerHTML).toBe('Beef and Mustard Pie');
   });
-
 
   it('without a div with class loading', () => {
     const { container } = renderedComponent;
     const appElement = container.querySelector('.Loading');
     expect(appElement).toBeNull();
     // expect(getByText("Click Me").href).toBe("/recipes/52874")
-    });
+  });
 
-  it('test link href ', ()=> {
-    const {container } = renderedComponent;
+  it('test link href ', () => {
+    const { container } = renderedComponent;
     const appElement = container.querySelector('.Layout').querySelector('a');
     expect(appElement.href).toBe('http://localhost/recipes/52874');
-  })
+  });
 
-  it('Presence of the link ', ()=> {
-    const {container } = renderedComponent;
+  it('Presence of the link ', () => {
+    const { container } = renderedComponent;
     const appElement = container.querySelector('.Layout').querySelector('a');
-    expect(appElement).not.toBeFalsy()
-  })
+    expect(appElement).not.toBeFalsy();
+  });
 
   it('has a has a name of food with : ', () => {
     const { getByText } = renderedComponent;
