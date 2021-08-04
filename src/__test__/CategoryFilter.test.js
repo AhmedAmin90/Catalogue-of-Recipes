@@ -39,7 +39,40 @@ describe('rendered Main', () => {
     expect(appElement).toBeInTheDocument();
     screen.getByText(/All/);
   });
+
+  it('has a a label with Filter by category', () => {
+    expect(screen.getByText(/Filter By Category/)).toBeTruthy();
+  });
 });
+
+
+describe('rendered Main', () => {
+  let renderedComponent;
+  beforeEach(() => {
+    renderedComponent = render(
+      <Provider store={store}>
+        <Router>
+          <CategoryFilter handleFilter={() => {}} value="" />
+        </Router>
+      </Provider>,
+    );
+  });
+
+  it('has a div with class CategoryFilter', () => {
+    const { container } = renderedComponent;
+    const appElement = container.querySelector('.CategoryFilter');
+    expect(appElement).toBeInTheDocument();
+  });
+
+  it('has a a select with id filter-category without value', () => {
+    const {container } = renderedComponent;
+    const appElement = container.querySelector('#fiter-category')
+    expect(appElement).toBeTruthy();
+    expect(appElement.innerHTML).not.toBe('All')
+  });
+});
+
+
 
 describe('Test handle Change', () => {
   const CategoryFilter = () => {

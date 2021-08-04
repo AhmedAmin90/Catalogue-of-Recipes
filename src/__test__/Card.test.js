@@ -31,6 +31,7 @@ describe('rendered Main', () => {
     const appElement = container.querySelector('.Card');
     expect(appElement).toBeInTheDocument();
     expect(appElement).toHaveStyle('background-image: url(\'Test Url\')');
+    expect(appElement).not.toBeNull()
   });
 
   it('The div has a text with name prop', () => {
@@ -42,11 +43,19 @@ describe('rendered Main', () => {
   it('Contains header h1 in the page:', () => {
     const appElement = screen.getByRole('heading');
     expect(appElement).toBeTruthy();
+    expect(appElement.innerHTML).toBe('Test Name');
+    expect(appElement.innerHTML).not.toBe(null);
   });
 
   it('Contains div with card-shadow class', () => {
     const { container } = renderedComponent;
     const appElement = container.querySelector('.Card-shadow');
+    expect(appElement).not.toBeFalsy();
+  });
+
+  it('Contains div with card-name is present', () => {
+    const { container } = renderedComponent;
+    const appElement = container.querySelector('.Card-name');
     expect(appElement).not.toBeFalsy();
   });
 });
