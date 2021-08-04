@@ -3,8 +3,8 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Card from './Card';
-import CategoryFilter from '../components/CategoryFilter';
+import Card from '../components/Card';
+import CategoryFilter from './CategoryFilter';
 import * as actions from '../actions/index';
 import './Layout.css';
 
@@ -54,20 +54,6 @@ const Layout = ({ selectedCategory, foods, filteredFood }) => {
           ));
         }
       }
-      // for (const cat of renderSelectedCategory) {
-      //   if (cat[category]) {
-      //     return cat[category].map((food) => (
-      //       <Link key={food.idMeal} to={`/recipes/${food.idMeal}`}>
-      //         <Card
-      //           key={food.idMeal}
-      //           id={food.idMeal}
-      //           name={food.strMeal}
-      //           img={food.strMealThumb}
-      //         />
-      //       </Link>
-      //     ));
-      //   }
-      // }
     } else {
       for (let i = 0; i < selectedCategory.length; i += 1) {
         if (selectedCategory[i][category]) {
@@ -83,20 +69,6 @@ const Layout = ({ selectedCategory, foods, filteredFood }) => {
           ));
         }
       }
-      // for (const cat of selectedCategory) {
-      //   if (cat[category]) {
-      //     return cat[category].map((food) => (
-      //       <Link key={food.idMeal} to={`/recipes/${food.idMeal}`}>
-      //         <Card
-      //           key={food.idMeal}
-      //           id={food.idMeal}
-      //           name={food.strMeal}
-      //           img={food.strMealThumb}
-      //         />
-      //       </Link>
-      //     ));
-      //   }
-      // }
     }
   };
 

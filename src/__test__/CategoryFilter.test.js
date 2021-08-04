@@ -8,7 +8,7 @@ import {
   BrowserRouter as Router,
 } from 'react-router-dom';
 import store from '../index';
-import CategoryFilter from '../components/CategoryFilter';
+import CategoryFilter from '../containers/CategoryFilter';
 
 test('renders correctly', () => {
   const tree = create(

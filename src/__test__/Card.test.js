@@ -7,7 +7,7 @@ import {
   BrowserRouter as Router,
 } from 'react-router-dom';
 import store from '../index';
-import Card from '../containers/Card';
+import Card from '../components/Card';
 
 test('renders correctly', () => {
   const tree = create(<Card name="test" img="test" />).toJSON();
